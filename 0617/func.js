@@ -19,8 +19,10 @@ ShowMessage("James", "Kirk");
 
 //Function Returning a Function
 function multiple(x) {
+    console.log("X is " + x)
     function fn(y)
     {
+        console.log("y is " + y)
         return x * y;
     }
     return fn;

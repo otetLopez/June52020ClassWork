@@ -1,0 +1,1 @@
+document.getElementById('checks').innerText = "now running on script within folder.";
