@@ -1,0 +1,32 @@
+<html>
+    <head>
+  <script>
+
+  var toggleimage=new Array("./images/brown1.jpg","./images/brownAndSally.jpg")
+  var image_1=new Image()
+  var image_2=new Image()
+  image_1.src=toggleimage[0]
+  image_2.src=toggleimage[1]
+  var i_image=0
+
+  function testloading() {
+      isloaded=true
+  }
+
+  function toggle() {
+      if (isloaded) {
+          document.togglepicture.src=toggleimage[i_image]
+      }
+      i_image++
+      if (i_image>1) {i_image=0}
+  }
+  onload=testloading
+  </script>
+
+  <title>Test Image Swapping </title>
+    </head>
+
+  <body>
+  <a href="javascript:toggle()"><img name="togglepicture" src="./images/brown1.jpg" border="5" width=300></a>
+  </body>
+  </html>
