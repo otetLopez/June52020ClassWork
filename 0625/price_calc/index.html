@@ -1,0 +1,74 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form id="carform" autocomplete="off">
+        <label>
+            <input id="sunroof" type="checkbox" value="1000" data-itemname="Sunroof">
+            Sunroof: $1000
+        </label>
+        <label>
+            <input id="gps" type="checkbox" value="5000" data-itemname="Built-in GPS">
+            Built-in GPS: $5000
+        </label>
+    </form>
+    <div>
+        Selections:
+        <div id="selections"></div>
+        
+        Total Price: <span id="price"></span>
+    </div>
+    
+    <script>
+
+        // start the price at 20000 and show it
+        var price = 20000;
+        document.getElementById('price').innerHTML = price;
+        
+        // when user clicks sunroof, gps, handle it properly
+        // document.getElementById('sunroof').onclick = handleOption;
+        // document.getElementById('gps').onclick = handleOption;
+        var options = document.getElementById('carform').querySelectorAll('input');
+        for(var i=0; i<options.length; i++){
+            options[i].onclick = handleOption;
+        }
+
+        // when user clicks an option...
+        function handleOption(){
+            // convert value from string to number
+            var itemPrice = Number(this.value);
+            // if checked, add to total price
+            if(this.checked){
+                price += itemPrice;
+            }
+            // otherwise, subtract from total price
+            else {
+                price -= itemPrice;
+            }
+            // show price
+            document.getElementById('price').innerHTML = price;
+            showSelections();
+        }
+
+        function showSelections() {
+            // start with an empty list
+            var list = [];
+            // find each checked option in our form
+            var checkedOnes = document.getElementById('carform').querySelectorAll('input:checked');
+            // for each checked option, get the item name and put it on the list
+            for(var i=0; i<checkedOnes.length; i++){
+                var itemname = checkedOnes[i].getAttribute('data-itemname');
+                list.push(itemname);
+            }
+            // show the completed list
+            document.getElementById('selections').innerHTML = list.join('<br>');
+        }
+
+
+    </script>
+    
+</body>
+</html>
